@@ -9,7 +9,7 @@ export default class guessChecker{
       for (let j = 0; j < lastGuess.length; j++)
       if (lastGuess[j] === secretWord[i]){
         guessArray.push(secretWord[i]);
-        
+        console.log(guessArray[0]);
       } else {
       console.log('no');
       }

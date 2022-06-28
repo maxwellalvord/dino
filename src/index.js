@@ -8,10 +8,9 @@ $(document).ready(function() {
   $('#dinoLang').click(function() {
     $('.dinoDiv').children('p').remove();
     $('.word').children('p').remove();
-    let guess = new guessChecker();
-
     
-
+    
+    
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
       const url = `https://dinoipsum.com/api/?format=json&paragraphs=1&words=1`;
@@ -26,11 +25,12 @@ $(document).ready(function() {
       request.send();
       
     });
-
+    
     
     promise.then(function(response) {
       const body = JSON.parse(response);
       const properString = body[0].toString();
+      let guess = new guessChecker(properString);
       let letterArray = properString.split("");
       for (let i=0; i < body.length; i++) {
         $('.dinoDiv').append(`<p>${body[i]}<p><br>`);
